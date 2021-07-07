@@ -34,6 +34,15 @@ namespace Aperomero.TrainingPlan.UIs
 
         #endregion
 
+        #region Getters
+
+        public DateTime GetSelectedDate()
+        {
+            return date;
+        }
+
+        #endregion
+
         #region Buttons
 
         public void OpenSmallCalendar()

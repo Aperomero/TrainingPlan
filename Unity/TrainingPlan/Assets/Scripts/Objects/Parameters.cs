@@ -1,12 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Aperomero.TrainingPlan.Objects
 {
 
+    [Serializable]
     public class Parameters
     {
+
+        #region Constructor
+
+        public Parameters()
+        {
+
+        }
+
+        #endregion
 
     }
 

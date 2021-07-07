@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace Aperomero.TrainingPlan.Objects
 {
 
+    [Serializable]
     /// <summary>
     /// A training season
     /// </summary>
@@ -15,6 +16,9 @@ namespace Aperomero.TrainingPlan.Objects
 
         // The season name
         private string name;
+
+        // The name of the file
+        private string saveFilePath;
 
         // The first day of the season
         private DateTime startingDay;
@@ -38,9 +42,19 @@ namespace Aperomero.TrainingPlan.Objects
         public Season(string name, DateTime startingDay, Parameters parameters)
         {
             this.name = name;
+            saveFilePath = "Assets/Resources/Seasons/" + name + ".bin";
             this.startingDay = startingDay;
             this.parameters = parameters;
             weeks = new Week[52];
+        }
+
+        #endregion
+
+        #region Getters
+
+        public string GetSaveFilePath()
+        {
+            return saveFilePath;
         }
 
         #endregion
