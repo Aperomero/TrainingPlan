@@ -18,7 +18,7 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
 
         #region Unity Methods
 
-        private void Start()
+        private void Awake()
         {
             int counter = 0;
             foreach(Transform child in transform)

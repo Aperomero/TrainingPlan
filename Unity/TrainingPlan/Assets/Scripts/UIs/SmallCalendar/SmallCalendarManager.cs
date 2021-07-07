@@ -20,7 +20,10 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
         public SmallCalendarWeek[] weeks = new SmallCalendarWeek[6];
 
         // The selected date (starts with the current date)
-        private DateTime selectedDate = DateTime.Now;
+        private DateTime selectedDate;
+
+        // The object asking for a date
+        private DateInputField input;
 
         #endregion
 
@@ -28,6 +31,7 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
 
         private void Start()
         {
+            selectedDate = DateTime.Now;
             UpdateMonth(selectedDate);
             foreach (SmallCalendarWeek week in weeks)
                 week.SetCalendarManager(this);
@@ -135,6 +139,15 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
 
         #endregion
 
+        #region Setters
+
+        public void SetInput(DateInputField inputField)
+        {
+            input = inputField;
+        }
+
+        #endregion
+
         #region Buttons Reactions
 
         public void NextMonth()
@@ -147,6 +160,12 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
         {
             selectedDate = selectedDate.AddMonths(-1);
             UpdateMonth(selectedDate);
+        }
+
+        public void ValidateButton()
+        {
+            input.SetDate(selectedDate);
+            Destroy(gameObject);
         }
 
         #endregion
