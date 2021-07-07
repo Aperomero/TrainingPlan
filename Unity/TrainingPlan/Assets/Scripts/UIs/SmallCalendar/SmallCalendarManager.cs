@@ -16,6 +16,9 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
         [Tooltip("The textbox to display the month")]
         public TextMeshProUGUI monthText;
 
+        [Tooltip("The weeks of the small calendar from top to bottom")]
+        public SmallCalendarWeek[] weeks = new SmallCalendarWeek[6];
+
         // The selected date (starts with the current date)
         private DateTime selectedDate = DateTime.Now;
 
@@ -26,6 +29,18 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
         private void Start()
         {
             UpdateMonth(selectedDate);
+            foreach (SmallCalendarWeek week in weeks)
+                week.SetCalendarManager(this);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void SetSelectedDate(DateTime date)
+        {
+            selectedDate = date;
+            UpdateMonth(selectedDate);
         }
 
         #endregion
@@ -33,7 +48,7 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
         #region Private Methods
 
         /// <summary>
-        /// Update the display of the month text
+        /// Update the display of the month
         /// </summary>
         /// <param name="date">The selected date</param>
         private void UpdateMonth(DateTime date)
@@ -82,6 +97,56 @@ namespace Aperomero.TrainingPlan.UIs.SmallCalendar
             }
 
             monthText.text = month + " " + year;
+
+            DateTime firstDayOfTheMonth = date.AddDays(-(date.Day - 1));
+            DateTime firstDayDisplay = firstDayOfTheMonth;
+
+            switch (firstDayOfTheMonth.DayOfWeek)
+            {
+                case DayOfWeek.Tuesday:
+                    firstDayDisplay = firstDayOfTheMonth.AddDays(-1);
+                    break;
+                case DayOfWeek.Wednesday:
+                    firstDayDisplay = firstDayOfTheMonth.AddDays(-2);
+                    break;
+                case DayOfWeek.Thursday:
+                    firstDayDisplay = firstDayOfTheMonth.AddDays(-3);
+                    break;
+                case DayOfWeek.Friday:
+                    firstDayDisplay = firstDayOfTheMonth.AddDays(-4);
+                    break;
+                case DayOfWeek.Saturday:
+                    firstDayDisplay = firstDayOfTheMonth.AddDays(-5);
+                    break;
+                case DayOfWeek.Sunday:
+                    firstDayDisplay = firstDayOfTheMonth.AddDays(-6);
+                    break;
+            }
+
+            int counter = 0;
+            foreach(SmallCalendarWeek week in weeks)
+            {
+                week.UpdateFirstDayDate(firstDayDisplay.AddDays(7 * counter));
+                week.SetSelectedDate(selectedDate);
+                counter++;
+            }
+
+        }
+
+        #endregion
+
+        #region Buttons Reactions
+
+        public void NextMonth()
+        {
+            selectedDate = selectedDate.AddMonths(1);
+            UpdateMonth(selectedDate);
+        }
+
+        public void PreviousMonth()
+        {
+            selectedDate = selectedDate.AddMonths(-1);
+            UpdateMonth(selectedDate);
         }
 
         #endregion
