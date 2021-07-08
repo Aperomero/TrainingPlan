@@ -9,6 +9,22 @@ namespace Aperomero.TrainingPlan.Objects
     public class Day
     {
 
+        #region Variables
+
+        // The date of the day
+        private DateTime dayDate;
+
+        #endregion
+
+        #region Constructors
+
+        public Day(DateTime date)
+        {
+            dayDate = date;
+        }
+
+        #endregion
+
     }
 
 }

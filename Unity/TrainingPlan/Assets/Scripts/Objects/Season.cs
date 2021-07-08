@@ -46,6 +46,10 @@ namespace Aperomero.TrainingPlan.Objects
             this.startingDay = startingDay;
             this.parameters = parameters;
             weeks = new Week[52];
+            for (int i = 0; i < 52; i++)
+            {
+                weeks[i] = new Week(startingDay.AddDays(7 * i));
+            }
         }
 
         #endregion
