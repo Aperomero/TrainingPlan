@@ -25,6 +25,15 @@ namespace Aperomero.TrainingPlan.Objects
 
         #endregion
 
+        #region Getters
+
+        public DateTime GetDate()
+        {
+            return dayDate;
+        }
+
+        #endregion
+
     }
 
 }

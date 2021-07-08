@@ -48,7 +48,7 @@ namespace Aperomero.TrainingPlan.Objects
             weeks = new Week[52];
             for (int i = 0; i < 52; i++)
             {
-                weeks[i] = new Week(startingDay.AddDays(7 * i));
+                weeks[i] = new Week(i+1, startingDay.AddDays(7 * i));
             }
         }
 
@@ -56,9 +56,19 @@ namespace Aperomero.TrainingPlan.Objects
 
         #region Getters
 
+        public string GetSeasonName()
+        {
+            return name;
+        }
+
         public string GetSaveFilePath()
         {
             return saveFilePath;
+        }
+
+        public Week GetWeek(int i)
+        {
+            return weeks[i];
         }
 
         #endregion
