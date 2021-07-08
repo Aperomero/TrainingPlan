@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/NewSeasonScene.unity
     guid: 0575e695812639f4c85444e6acb89cb6
   - enabled: 1
-    path: Assets/Scenes/MainCalendarScene.unity
-    guid: 6052f7f77e9c5dc478780370e3c2ae57
+    path: Assets/Scenes/CalendarViews/MonthView.unity
+    guid: c27c7e2c14a683145972515672be4a60
   m_configObjects: {}

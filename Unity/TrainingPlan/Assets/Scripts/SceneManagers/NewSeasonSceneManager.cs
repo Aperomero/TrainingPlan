@@ -33,8 +33,9 @@ namespace Aperomero.TrainingPlan.SceneManagement
         public void ValidateButton()
         {
             Season newSeason = new Season(inputSeasonName.text, inputStartingDate.GetSelectedDate(), new Parameters());
-            BinarySerialization.WriteToBinaryFile<Season>(newSeason.GetSaveFilePath(), newSeason);
-            PrivateTools.Debugging("Season Created");
+            CrossSceneParameters.openedSeason = newSeason;
+            SceneManager.LoadScene("MonthView");
+            // BinarySerialization.WriteToBinaryFile<Season>(newSeason.GetSaveFilePath(), newSeason);
         }
 
         #endregion
