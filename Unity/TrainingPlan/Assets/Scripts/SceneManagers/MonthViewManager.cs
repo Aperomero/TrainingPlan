@@ -25,9 +25,42 @@ namespace Aperomero.TrainingPlan.SceneManagement
         private void Start()
         {
             displayedSeason = CrossSceneParameters.openedSeason;
+            DisplayFromWeek(0);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Set all the weeks displayed
+        /// </summary>
+        /// <param name="weekNum">The first week displayed</param>
+        private void DisplayFromWeek(int weekNum)
+        {
             for (int i = 0; i < 5; i++)
             {
-                weeksDisplayed[i].SetWeekObject(displayedSeason.GetWeek(i));
+                weeksDisplayed[i].SetWeekObject(displayedSeason.GetWeek(i + weekNum));
+            }
+        }
+
+        #endregion
+
+        #region Buttons Reaction
+
+        public void DownButton()
+        {
+            if (weeksDisplayed[0].GetWeekNumber() < 48)
+            {
+                DisplayFromWeek(weeksDisplayed[0].GetWeekNumber());
+            }
+        }
+
+        public void UpButton()
+        {
+            if (weeksDisplayed[0].GetWeekNumber() > 1)
+            {
+                DisplayFromWeek(weeksDisplayed[0].GetWeekNumber() - 2);
             }
         }
 

@@ -37,6 +37,15 @@ namespace Aperomero.TrainingPlan.SeasonViews.Calendars
 
         #endregion
 
+        #region Getters
+
+        public int GetWeekNumber()
+        {
+            return weekObject.GetWeekNumber();
+        }
+
+        #endregion
+
     }
 
 }
