@@ -48,7 +48,7 @@ namespace Aperomero.TrainingPlan.Objects
             weeks = new Week[52];
             for (int i = 0; i < 52; i++)
             {
-                weeks[i] = new Week(i+1, startingDay.AddDays(7 * i));
+                weeks[i] = new Week(i + 1, startingDay.AddDays(7 * i));
             }
         }
 

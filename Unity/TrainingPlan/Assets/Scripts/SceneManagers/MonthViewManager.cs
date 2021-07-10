@@ -25,6 +25,7 @@ namespace Aperomero.TrainingPlan.SceneManagement
         private void Start()
         {
             displayedSeason = CrossSceneParameters.openedSeason;
+            PrivateTools.Debugging(displayedSeason.GetSeasonName());
             DisplayFromWeek(0);
         }
 
@@ -47,6 +48,11 @@ namespace Aperomero.TrainingPlan.SceneManagement
         #endregion
 
         #region Buttons Reaction
+
+        public void SaveButton()
+        {
+            BinarySerialization.WriteToBinaryFile(displayedSeason.GetSaveFilePath(), displayedSeason);
+        }
 
         public void DownButton()
         {
