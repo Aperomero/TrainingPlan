@@ -31,7 +31,9 @@ namespace Aperomero.TrainingPlan.SceneManagement
             List<string> choices = new List<string>();
             foreach (string file in Directory.GetFiles("Saves/Seasons"))
             {
-                choices.Add(file);
+                string correctedFile = file.Substring(14);
+                correctedFile = correctedFile.Substring(0, correctedFile.Length - 4);
+                choices.Add(correctedFile);
             }
 
             seasonChoice.AddOptions(choices);
@@ -48,10 +50,12 @@ namespace Aperomero.TrainingPlan.SceneManagement
 
         public void LoadSeason()
         {
-            //Season loadedSeason = BinarySerialization.ReadFromBinaryFile<Season>("Assets/Resources/Seasons/test.bin");
-            //CrossSceneParameters.openedSeason = loadedSeason;
-            //SceneManager.LoadScene("MonthView");
-
+            string binFile = "Saves/Seasons/";
+            binFile += seasonChoice.options[seasonChoice.value].text;
+            binFile += ".bin";
+            Season loadedSeason = BinarySerialization.ReadFromBinaryFile<Season>(binFile);
+            CrossSceneParameters.openedSeason = loadedSeason;
+            SceneManager.LoadScene("MonthView");
         }
 
         #endregion

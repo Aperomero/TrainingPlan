@@ -25,7 +25,6 @@ namespace Aperomero.TrainingPlan.SceneManagement
         private void Start()
         {
             displayedSeason = CrossSceneParameters.openedSeason;
-            PrivateTools.Debugging(displayedSeason.GetSeasonName());
             DisplayFromWeek(0);
         }
 
