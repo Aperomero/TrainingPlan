@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.IO;
 using Aperomero.TrainingPlan.UserObjects;
@@ -40,8 +41,6 @@ namespace Aperomero.TrainingPlan.SceneMainManagement
 
         private void Start()
         {
-            
-
             OpenWelcomePage();
         }
 
@@ -112,6 +111,18 @@ namespace Aperomero.TrainingPlan.SceneMainManagement
         public void ExitApplication()
         {
             Application.Quit();
+        }
+
+        /// <summary>
+        /// Open the main calendar view by loading a new scene
+        /// </summary>
+        public void OpenMainCalendarView()
+        {
+            if (profileChoice.options[profileChoice.value].text != "")
+            {
+                CrossSceneParameters.currentProfile = BinarySerialization.ReadFromBinaryFile<UserProfile>("Saves/Profiles/" + profileChoice.options[profileChoice.value].text + ".bin");
+                SceneManager.LoadScene("MainCalendarView");
+            }
         }
 
         #endregion

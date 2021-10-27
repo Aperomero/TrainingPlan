@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Welcome.unity
     guid: 622e6cb5691560744979ce4469cd12c1
+  - enabled: 1
+    path: Assets/Scenes/MainCalendarView.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
