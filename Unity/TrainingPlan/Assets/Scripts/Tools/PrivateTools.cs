@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PrivateTools : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public static void Debbuging(string debug)
     {
-        
+
+        Debug.Log("<b>[Debug]</b> " + debug);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
